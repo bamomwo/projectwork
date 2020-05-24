@@ -43,19 +43,33 @@
 
                   </div>
 
-                    <div class="form-group">
-                      <input type="text" class="form-control form-control-user"  aria-describedby="username" name="username" placeholder="Enter Student ID" onkeyup="CheckSeatNumber(this.value);">
+                    <div class="form-group mb-3">
+                      <input type="text" class="form-control form-control-user "  aria-describedby="username" name="username" placeholder="Enter Student ID" onkeyup="CheckSeatNumber(this.value);">
                     </div>
-                    
-                    
+
+
                     <hr>
 
-                    <div id="seatnumber" class="m-5 p-5"></div>
-                    
+
+                    <table class="table table-hover">
+                    <thead>
+                      <tr class="bg-success text-white">
+                        <th>Name</th>
+                        <th>Row No</th>
+                        <th>Colum No</th>
+                        <th>Seat No</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <div id="seatnumber" ></div>
+                    </tbody>
+
+                  </table>
                     <hr>
 
-                  
-                  
+
+
                 </div>
               </div>
             </div>
@@ -77,6 +91,7 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+  <script src="js/demo/checkseatnumber.js"></script>
 
 </body>
 

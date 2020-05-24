@@ -1,4 +1,4 @@
-<?php 
+<?php
   session_start();
   require('connect.php');
 
@@ -7,8 +7,8 @@
 }else{
   header("Location: index.php");
 }
-  
-	
+
+
 
 ?>
 
@@ -60,7 +60,7 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-      
+
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
@@ -97,7 +97,7 @@
           <span>Students to Courses</span></a>
       </li>
 
-      
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
@@ -130,14 +130,14 @@
             <i class="fa fa-bars"></i>
           </button>
 
-     
+
           <div class="d-none d-sm-inline-block ml-md-3 my-2 my-md-0 mw-100">
             <h3 class="text-success"> Desk Assignment System </h3>
           </div>
 
           <!-- Topbar Navbar -->
               <ul class="navbar-nav ml-auto">
-      <div class="topbar-divider d-none d-sm-block"></div> 
+      <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
       <li class="nav-item dropdown">
@@ -163,7 +163,6 @@
 
             <!-- Content Row -->
           <div class="row">
-
             <!-- Content Column -->
             <div class="col-lg-6 mb-4">
 
@@ -174,27 +173,94 @@
                 </div>
                 <div class="card-body">
 
+                  <table class="table table-striped">
+                    <thead>
+                      <th>Course-Code</th>
+                      <th>Preview</th>
+                    </thead>
+                    <tbody>
 
+
+
+
+                    <?php
+                      $stmt = $conn->prepare("SELECT DISTINCT course_code FROM seatnumbers");
+                      $stmt->execute();
+                      $stmt->store_result();
+                      $stmt->bind_result($code);
+
+                      while($stmt->fetch()){
+                        echo('
+                            <tr>
+                              <td>'.$code.'</td>
+                              <td><button class="btn btn-sm btn-block btn-outline-info rounded-pill" value="'.$code.'" onclick="Display(this.value);"><i class="fa fa-print"></i> View </button></td>
+                            </tr>
+                        ');
+                      }
+
+                     ?>
+                   </tbody>
+                   </table>
 
 
                 </div>
               </div>
 
-
-
             </div>
 
             <div class="col-lg-6 mb-4">
-
-
-
-              
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-success">Attendance Report</h6>
                 </div>
                 <div class="card-body">
-                  
+                  <table class="table table-striped">
+                    <thead>
+                      <th>Course-Code</th>
+                      <th>Preview</th>
+                    </thead>
+                    <tbody>
+
+
+
+
+                    <?php
+                      $stmt = $conn->prepare("SELECT DISTINCT course_code FROM seatnumbers");
+                      $stmt->execute();
+                      $stmt->store_result();
+                      $stmt->bind_result($code);
+
+                      while($stmt->fetch()){
+                        echo('
+                            <tr>
+                              <td>'.$code.'</td>
+                              <td><button class="btn btn-sm btn-block btn-outline-info rounded-pill" value="'.$code.'" onclick="Attendance(this.value);"><i class="fa fa-print"></i> View </button></td>
+                            </tr>
+                        ');
+                      }
+
+                     ?>
+                   </tbody>
+                   </table>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-lg-10 mb-4 mx-auto">
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-success">Preview & Print</h6>
+                </div>
+                <div class="card-body">
+
+                  <button class="btn btn-sm col-3 btn-outline-danger rounded-pill" onclick= documentPrint();><i class="fa fa-print"></i> Print</button>
+
+                  <hr>
+                    <div id="previewandprint"></div>
                 </div>
               </div>
 
@@ -214,16 +280,14 @@
   <script src="js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src ="js/demo/display.js"></script>
+  <script src ="js/demo/printing.js"></script>
+  <script src="js/demo/datatables1.js"></script>
+  <script src="  https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 
 </html>
-
-
-
- 
